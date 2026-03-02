@@ -27,6 +27,17 @@ async def add(ctx, left: int, right: int):
     await ctx.send(left + right)
 
 @bot.command()
+async def memx(ctx):
+    img_name = random.choice(os.listdir("animals"))
+    with open(f'animals/{img_name}', 'rb') as f:
+        # Dönüştürülen Discord kütüphane dosyasını bu değişkende saklayalım!
+        picture = discord.File(f)
+   # Daha sonra bu dosyayı bir parametre olarak gönderebiliriz!
+    await ctx.send(file=picture)
+
+
+
+@bot.command()
 async def mem(ctx):
     img_name = random.choice(os.listdir("images"))
     with open(f'images/{img_name}', 'rb') as f:
